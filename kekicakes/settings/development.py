@@ -1,14 +1,13 @@
 """KekiCakes – Development Settings"""
 from .base import *
-from decouple import config
+import os
 
 DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 # ── SQLite fallback for local development without MySQL ───────────────────────
 # Set USE_SQLITE=True in your .env to skip MySQL
-import os
-if config('USE_SQLITE', default='False', cast=bool):
+if os.getenv('USE_SQLITE', 'False').lower() in ('true', '1', 't'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

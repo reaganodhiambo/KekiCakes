@@ -8,14 +8,17 @@ import pymysql
 pymysql.version_info = (2, 2, 1, 'final', 0)
 pymysql.install_as_MySQLdb()
 
+import os
 from pathlib import Path
-from decouple import config
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = config('SECRET_KEY', default='insecure-dev-key-change-me')
-DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,kekicakes.co.ke,www.kekicakes.co.ke').split(',')
+load_dotenv(BASE_DIR / '.env')
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'insecure-dev-key-change-me')
+DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,kekicakes.co.ke,www.kekicakes.co.ke').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -67,11 +70,11 @@ WSGI_APPLICATION = 'kekicakes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME', default='kekicakes_db'),
-        'USER': config('DB_USER', default='root'),
-        'PASSWORD': config('DB_PASSWORD', default=''),
-        'HOST': config('DB_HOST', default='127.0.0.1'),
-        'PORT': config('DB_PORT', default='3306'),
+        'NAME': os.getenv('DB_NAME', 'kekicakes_db'),
+        'USER': os.getenv('DB_USER', 'root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', ''),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': os.getenv('DB_PORT', '3306'),
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -105,24 +108,24 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ── M-Pesa / Daraja ───────────────────────────────────────────────────────────
-DARAJA_ENVIRONMENT = config('DARAJA_ENVIRONMENT', default='sandbox')
-DARAJA_CONSUMER_KEY = config('DARAJA_CONSUMER_KEY', default='')
-DARAJA_CONSUMER_SECRET = config('DARAJA_CONSUMER_SECRET', default='')
-DARAJA_SHORTCODE = config('DARAJA_SHORTCODE', default='174379')
-DARAJA_PASSKEY = config('DARAJA_PASSKEY', default='')
-DARAJA_CALLBACK_URL = config('DARAJA_CALLBACK_URL', default='https://example.com/payments/mpesa/callback/')
+DARAJA_ENVIRONMENT = os.getenv('DARAJA_ENVIRONMENT', 'sandbox')
+DARAJA_CONSUMER_KEY = os.getenv('DARAJA_CONSUMER_KEY', '')
+DARAJA_CONSUMER_SECRET = os.getenv('DARAJA_CONSUMER_SECRET', '')
+DARAJA_SHORTCODE = os.getenv('DARAJA_SHORTCODE', '174379')
+DARAJA_PASSKEY = os.getenv('DARAJA_PASSKEY', '')
+DARAJA_CALLBACK_URL = os.getenv('DARAJA_CALLBACK_URL', 'https://kekicakes.co.ke/payments/mpesa/callback/')
 
 # ── WhatsApp ──────────────────────────────────────────────────────────────────
-WHATSAPP_NUMBER = config('WHATSAPP_NUMBER', default='254712345678')
+WHATSAPP_NUMBER = os.getenv('WHATSAPP_NUMBER', '254111224642')
 
 # ── Cart Session Key ──────────────────────────────────────────────────────────
 CART_SESSION_ID = 'kekicakes_cart'
 
 # ── Email ─────────────────────────────────────────────────────────────────────
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST', default='mail.kekicakes.co.ke')
-EMAIL_PORT = config('EMAIL_PORT', default=465, cast=int)
-EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=True, cast=bool)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'mail.kekicakes.co.ke')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 465))
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True').lower() in ('true', '1', 't')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
