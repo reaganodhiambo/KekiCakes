@@ -3,7 +3,7 @@ from .base import *
 from decouple import config
 
 DEBUG = False
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='yourdomain.co.ke').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost,kekicakes.co.ke,www.kekicakes.co.ke').split(',')
 
 # Security headers
 SECURE_HSTS_SECONDS = 31536000
