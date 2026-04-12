@@ -31,8 +31,8 @@ if [ ! -f "${APP_DIR}/.env" ]; then
 fi
 
 echo "── Running Django migrations ───────────────────────────────"
-sudo -u $APP_USER bash -c "cd ${APP_DIR} && DJANGO_SETTINGS_MODULE=kekicakes.settings.production venv/bin/python manage.py migrate"
-sudo -u $APP_USER bash -c "cd ${APP_DIR} && DJANGO_SETTINGS_MODULE=kekicakes.settings.production venv/bin/python manage.py collectstatic --noinput"
+sudo -u $APP_USER bash -c "cd ${APP_DIR} && DJANGO_SETTINGS_MODULE=kekicakes.settings venv/bin/python manage.py migrate"
+sudo -u $APP_USER bash -c "cd ${APP_DIR} && DJANGO_SETTINGS_MODULE=kekicakes.settings venv/bin/python manage.py collectstatic --noinput"
 
 echo "── Installing Gunicorn systemd service ─────────────────────"
 cp "${APP_DIR}/nginx/kekicakes.service" /etc/systemd/system/kekicakes.service
