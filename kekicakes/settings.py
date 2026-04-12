@@ -116,7 +116,7 @@ DARAJA_PASSKEY = os.getenv('DARAJA_PASSKEY', '')
 DARAJA_CALLBACK_URL = os.getenv('DARAJA_CALLBACK_URL', 'https://kekicakes.co.ke/payments/mpesa/callback/')
 
 # ── WhatsApp ──────────────────────────────────────────────────────────────────
-WHATSAPP_NUMBER = os.getenv('WHATSAPP_NUMBER', '254111224642')
+WHATSAPP_NUMBER = os.getenv('WHATSAPP_NUMBER', '254726613651')
 
 # ── Cart Session Key ──────────────────────────────────────────────────────────
 CART_SESSION_ID = 'kekicakes_cart'

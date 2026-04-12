@@ -19,8 +19,8 @@
     <div class="space-y-3">
       {% for item in items %}
       <div class="flex justify-between text-sm">
-        <span class="text-espresso">{{ item.product.name }}
-          {% if item.size %}({{ item.size }}){% endif %}
+        <span class="text-espresso">{{ item.cake_name }}
+          {% if item.size_label %}({{ item.size_label }}){% endif %}
           × {{ item.quantity }}
         </span>
         <span class="font-semibold text-espresso">KES {{ item.subtotal|floatformat:"0" }}</span>

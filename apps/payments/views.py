@@ -28,7 +28,7 @@ class InitiatePaymentView(TemplateView):
             return redirect('core:home')
         return render(request, self.template_name, {
             'order': order,
-            'items': order.items.select_related('product').all(),
+            'items': order.items.all(),
         })
 
     def post(self, request, order_id, *args, **kwargs):
@@ -78,7 +78,7 @@ class InitiatePaymentView(TemplateView):
             return HttpResponse(html, status=200)
         return render(request, self.template_name, {
             'order': order,
-            'items': order.items.select_related('product').all(),
+            'items': order.items.all(),
             'error': error_msg,
         })
 
