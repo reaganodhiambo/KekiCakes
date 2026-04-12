@@ -10,7 +10,7 @@
 
     <!-- ── Form ────────────────────────────────────────────────── -->
     <div class="lg:col-span-3">
-      <form method="POST" action="{% url 'orders:checkout' %}" id="checkout-form" class="space-y-8" x-data="{ loading: false }" @submit="loading = true">
+      <form method="POST" action="{% url 'orders:checkout' %}" id="checkout-form" class="space-y-8" x-data="{ loading: false }" @submit="if($el.checkValidity()){ loading = true; } else { loading = false; }">
         {% csrf_token %}
 
         <!-- Customer Details -->
