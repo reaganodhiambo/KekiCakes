@@ -16,7 +16,7 @@
     <a href="{% url 'payments:initiate' order.pk %}" class="btn-primary px-8 py-4">
       🔄 Try Again
     </a>
-    <a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="btn-whatsapp px-8 py-4">
+    <a href="{{ whatsapp_url }}" target="_blank" class="btn-whatsapp px-8 py-4">
        Order via WhatsApp
     </a>
   </div>

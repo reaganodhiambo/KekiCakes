@@ -10,7 +10,7 @@
 
     <!-- ── Form ────────────────────────────────────────────────── -->
     <div class="lg:col-span-3">
-      <form method="POST" action="{% url 'orders:checkout' %}" id="checkout-form" class="space-y-8">
+      <form method="POST" action="{% url 'orders:checkout' %}" id="checkout-form" class="space-y-8" x-data="{ loading: false }" @submit="loading = true">
         {% csrf_token %}
 
         <!-- Customer Details -->
@@ -85,8 +85,15 @@
           </div>
         </div>
 
-        <button type="submit" class="btn-primary w-full py-5 text-lg" id="place-order-btn">
-           Place Order & Pay with M-Pesa
+        <button type="submit" class="btn-primary w-full py-5 text-lg" id="place-order-btn" :disabled="loading">
+           <span x-show="!loading">Place Order & Pay with M-Pesa</span>
+           <span x-show="loading" class="flex items-center justify-center gap-2" style="display: none;">
+                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+                Processing...
+           </span>
         </button>
 
         <a href="{{ whatsapp_url }}" target="_blank" class="btn-whatsapp w-full py-4 text-center block">

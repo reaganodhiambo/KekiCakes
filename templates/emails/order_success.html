@@ -1,0 +1,12 @@
+<h2>Order Confirmation - Keki Cakes</h2>
+<p>Hello {{ order.customer.name }},</p>
+<p>Your payment for Order #{{ order.pk }} was successful! We have received your order and are currently processing it.</p>
+<h3>Order Summary:</h3>
+<ul>
+{% for item in items %}
+  <li>{{ item.quantity }}x {{ item.cake_name }} ({{ item.size_label }} - {{ item.type_label }}) - KES {{ item.subtotal|floatformat:"0" }}</li>
+{% endfor %}
+</ul>
+<p><strong>Total Paid:</strong> KES {{ order.total|floatformat:"0" }}</p>
+
+<p>Thank you for choosing Keki Cakes!</p>

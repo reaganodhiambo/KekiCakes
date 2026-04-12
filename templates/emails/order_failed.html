@@ -1,0 +1,14 @@
+<h2>Payment Failed - Keki Cakes</h2>
+<p>Hello {{ order.customer.name }},</p>
+<p>The M-Pesa payment for your Order #{{ order.pk }} failed preventing it from completing.</p>
+<p>Don't worry! Your order details are saved on our end. You can either revisit the site to try again, or finish placing this order directly via our WhatsApp number!</p>
+
+<h3>Order Summary:</h3>
+<ul>
+{% for item in items %}
+  <li>{{ item.quantity }}x {{ item.cake_name }} ({{ item.size_label }})</li>
+{% endfor %}
+</ul>
+<p><strong>Total:</strong> KES {{ order.total|floatformat:"0" }}</p>
+
+<p>Reach back out if you're experiencing continuing issues.</p>

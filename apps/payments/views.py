@@ -75,7 +75,7 @@ class InitiatePaymentView(TemplateView):
                 {'error': error_msg},
                 request=request,
             )
-            return HttpResponse(html, status=400)
+            return HttpResponse(html, status=200)
         return render(request, self.template_name, {
             'order': order,
             'items': order.items.select_related('product').all(),
@@ -116,8 +116,13 @@ class MpesaCallbackView(View):
             payment.transaction_date = str(meta.get('TransactionDate', ''))
             payment.order.status = 'paid'
             payment.order.save(update_fields=['status'])
+            
+            from apps.orders.emails import send_order_notifications
+            send_order_notifications(payment.order, status='success')
         else:
             payment.status = 'failed'
+            from apps.orders.emails import send_order_notifications
+            send_order_notifications(payment.order, status='failed')
 
         payment.save()
         return JsonResponse({'ResultCode': 0, 'ResultDesc': 'Accepted'})
@@ -179,7 +184,9 @@ class PaymentFailedView(TemplateView):
 
     def get(self, request, order_id, *args, **kwargs):
         order = get_object_or_404(Order, pk=order_id)
+        from apps.orders.whatsapp import order_whatsapp_url
         return render(request, self.template_name, {
             'order': order,
             'payment': getattr(order, 'payment', None),
+            'whatsapp_url': order_whatsapp_url(order)
         })
