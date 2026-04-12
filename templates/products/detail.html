@@ -156,11 +156,21 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-3 pt-2">
-          <button type="submit" class="btn-primary flex-1 py-4" :disabled="!available || !variantId" :class="{'opacity-50 cursor-not-allowed': !available || !variantId}">
+        <div class="flex flex-col gap-3 pt-2">
+          <button type="submit" class="btn-primary w-full py-4 relative overflow-hidden group" :disabled="!available || !variantId" :class="{'opacity-50 cursor-not-allowed': !available || !variantId}">
+            <!-- Scarcity Glint Effect -->
+            <span class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent flex transition-all duration-700 group-hover:left-full"></span>
             Add to Cart – <span x-show="available" x-text="'KES ' + (price * qty).toLocaleString()"></span>
             <span x-show="!available">N/A</span>
           </button>
+          
+          <!-- Urgency Microcopy -->
+          <div class="flex items-start gap-2 bg-rose/10 border border-rose/20 rounded-xl p-3 mt-1">
+            <svg class="w-5 h-5 text-rose shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <p class="text-xs text-brown font-medium leading-relaxed">
+              <strong class="text-rose-dark">High Demand:</strong> Baking slots are filling up quickly this week. Place your order now to secure your delivery!
+            </p>
+          </div>
         </div>
       </form>
 

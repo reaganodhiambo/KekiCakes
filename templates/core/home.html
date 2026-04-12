@@ -7,68 +7,70 @@
 <!-- ═══════════════════════════════════════════════════════════════
      HERO SECTION
 ═══════════════════════════════════════════════════════════════ -->
-<section class="hero-gradient relative overflow-hidden min-h-[88vh] flex items-center">
+<section class="hero-gradient relative overflow-hidden min-h-[85vh] flex items-center">
   <!-- Decorative circles -->
   <div class="absolute top-10 right-10 w-72 h-72 bg-rose/10 rounded-full blur-3xl pointer-events-none"></div>
   <div class="absolute bottom-10 left-10 w-96 h-96 bg-brown/10 rounded-full blur-3xl pointer-events-none"></div>
 
-  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
     <!-- Hero Copy -->
     <div class="text-center lg:text-left animate-fade-in-up">
-      <span class="inline-block bg-rose/20 text-rose-light border border-rose/30 text-xs font-semibold tracking-widest uppercase rounded-full px-4 py-1.5 mb-6">
-         Freshly Baked Daily
+      <span class="inline-flex items-center gap-2 bg-rose/20 text-rose-dark border border-rose/30 text-xs font-bold tracking-widest uppercase rounded-full px-4 py-1.5 mb-6">
+         <span class="w-2 h-2 rounded-full bg-rose animate-pulse"></span>
+         Freshly Baked Daily in Nairobi
       </span>
-      <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-cream leading-tight mb-6">
-        Every Occasion<br/>
-        <span class="text-rose-light italic">Deserves a</span><br/>
-        Perfect Cake
+      <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-espresso leading-tight mb-6">
+        Premium Custom Cakes,<br/>
+        <span class="text-rose">Delivered Fresh</span><br/>
+        in Nairobi
       </h1>
-      <p class="text-cream/70 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
-        Premium custom cakes crafted by passionate bakers. From intimate birthday celebrations to grand weddings — we bake your story.
+      <p class="text-brown text-lg sm:text-xl leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+        From bespoke wedding tiers to last-minute birthday surprises, we bake your sweetest memories. 100% fresh, locally sourced ingredients with fast delivery.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-        <a href="{% url 'products:shop' %}" class="btn-primary text-lg px-8 py-4">
-          Order Now
+        <a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white rounded-full text-lg px-8 py-4 font-semibold shadow-xl shadow-green-500/20 transition-all hover:-translate-y-1">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
         </a>
-        <a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="btn-whatsapp text-lg px-8 py-4">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat on WhatsApp
+        <a href="{% url 'products:shop' %}" class="btn-outline text-lg px-8 py-4 bg-white/50 backdrop-blur-sm border-2">
+          Browse Catalog
         </a>
       </div>
-      <!-- Stats -->
-      <div class="flex gap-8 mt-12 justify-center lg:justify-start">
-        <div class="text-center">
-          <div class="font-display font-bold text-3xl text-cream">500+</div>
-          <div class="text-cream/60 text-sm">Happy Clients</div>
+
+      <!-- Trust Bar / Social Proof -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+        <div class="flex -space-x-3">
+          <img class="w-10 h-10 rounded-full border-2 border-white object-cover object-top" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Customer">
+          <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="Customer">
+          <img class="w-10 h-10 rounded-full border-2 border-white object-cover aspect-[4/5]" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt="Customer">
+          <div class="w-10 h-10 rounded-full border-2 border-white bg-cream flex items-center justify-center text-xs font-bold text-espresso">+500</div>
         </div>
-        <div class="w-px bg-cream/20"></div>
-        <div class="text-center">
-          <div class="font-display font-bold text-3xl text-cream">50+</div>
-          <div class="text-cream/60 text-sm">Cake Designs</div>
-        </div>
-        <div class="w-px bg-cream/20"></div>
-        <div class="text-center">
-          <div class="font-display font-bold text-3xl text-cream">5★</div>
-          <div class="text-cream/60 text-sm">Star Rating</div>
+        <div class="text-sm text-brown text-center sm:text-left">
+          <div class="flex gap-1 text-amber-500 mb-0.5 justify-center sm:justify-start">
+            ★★★★★
+          </div>
+          <span class="font-semibold text-espresso">Rated 4.9/5</span> by Nairobi clients
         </div>
       </div>
     </div>
 
     <!-- Hero Image / Decorative -->
     <div class="hidden lg:flex items-center justify-center relative">
-      <div class="w-96 h-96 rounded-full overflow-hidden shadow-2xl border border-rose/30">
+      <div class="w-[28rem] h-[28rem] rounded-full overflow-hidden shadow-2xl border-4 border-white">
         <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=800&q=80" alt="Special Cake" class="w-full h-full object-cover"/>
       </div>
       <!-- Floating labels -->
-      <div class="absolute top-12 right-0 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-fade-in-up" style="animation-delay:0.2s">
+      <div class="absolute top-12 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-fade-in-up" style="animation-delay:0.2s">
+        <div class="w-10 h-10 rounded-full bg-rose/20 flex items-center justify-center text-rose">✨</div>
         <div>
-          <div class="text-xs font-semibold text-espresso">Custom Designs</div>
+          <div class="text-sm font-bold text-espresso">Custom Designs</div>
           <div class="text-xs text-brown">Made just for you</div>
         </div>
       </div>
-      <div class="absolute bottom-16 left-0 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-fade-in-up" style="animation-delay:0.4s">
+      <div class="absolute bottom-16 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-fade-in-up" style="animation-delay:0.4s">
+        <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-500">🚚</div>
         <div>
-          <div class="text-xs font-semibold text-espresso">Same-Day Delivery</div>
+          <div class="text-sm font-bold text-espresso">Fast Delivery</div>
           <div class="text-xs text-brown">Across Nairobi</div>
         </div>
       </div>
@@ -109,8 +111,8 @@
 <section id="categories" class="py-20 bg-cream-light">
   <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="section-title">Shop by Category</h2>
-      <p class="section-subtitle">Find the perfect cake for every occasion</p>
+      <h2 class="section-title">Shop by Occasion</h2>
+      <p class="section-subtitle">Find the perfect cake to match your celebration</p>
       <div class="section-divider mx-auto max-w-xs"></div>
     </div>
 
@@ -137,12 +139,12 @@
   <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10">
       <div>
-        <h2 class="section-title">Our Featured Cakes</h2>
-        <p class="section-subtitle">Bestsellers loved by our customers</p>
+        <h2 class="section-title">Taste the Magic</h2>
+        <p class="section-subtitle">Our most popular masterpieces waiting for your touch</p>
         <div class="section-divider"></div>
       </div>
-      <a href="{% url 'products:shop' %}" class="btn-outline mt-4 sm:mt-0 self-start sm:self-auto">
-        View All Cakes →
+      <a href="{% url 'products:shop' %}" class="btn-outline mt-4 sm:mt-0 self-start sm:self-auto font-semibold">
+        Explore All Cakes →
       </a>
     </div>
 
@@ -201,46 +203,55 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     HOW IT WORKS
+     HOW IT WORKS (Updated CRO Flow)
 ═══════════════════════════════════════════════════════════════ -->
 <section id="how-it-works" class="py-20 bg-cream">
   <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <h2 class="section-title">How it Works</h2>
-      <p class="section-subtitle">Order your dream cake in 5 easy steps</p>
-      <div class="section-divider mx-auto max-w-xs"></div>
+      <h2 class="section-title">Order in 3 Simple Steps</h2>
+      <p class="section-subtitle">A seamless baking experience without the hassle</p>
+      <div class="section-divider mx-auto max-w-[80px]"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8 relative">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative max-w-5xl mx-auto">
       <!-- Connector line (desktop only) -->
-      <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-rose/20 via-rose to-rose/20"></div>
+      <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-rose/20 via-rose to-rose/20"></div>
 
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Browse & Select</h3>
-        <p class="text-brown text-sm leading-relaxed">Find your favourite design from our collection or request a custom one.</p>
+      <!-- Step 1 -->
+      <div class="step-card bg-white p-8 rounded-3xl shadow-lg border border-cream-dark transition-all hover:-translate-y-2">
+        <div class="w-16 h-16 rounded-full bg-rose text-white flex items-center justify-center text-2xl font-bold font-display mx-auto mb-6 shadow-md shadow-rose/30">1</div>
+        <h3 class="font-display font-semibold text-xl text-espresso mb-3 text-center">Choose & Customize</h3>
+        <p class="text-brown text-sm leading-relaxed text-center">Find a design you love, pick your flavors, size, and don't forget to add your personalized message!</p>
       </div>
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Customize</h3>
-        <p class="text-brown text-sm leading-relaxed">Choose your preferred weight, flavour, colour, and add a personalized message.</p>
+
+      <!-- Step 2 -->
+      <div class="step-card bg-white p-8 rounded-3xl shadow-lg border border-cream-dark transition-all hover:-translate-y-2">
+        <div class="w-16 h-16 rounded-full bg-brown/80 text-white flex items-center justify-center text-2xl font-bold font-display mx-auto mb-6 shadow-md shadow-brown/20">2</div>
+        <h3 class="font-display font-semibold text-xl text-espresso mb-3 text-center">Checkout Securely</h3>
+        <p class="text-brown text-sm leading-relaxed text-center">Enter delivery details and seamlessly pay with M-Pesa. Our master bakers will get to work immediately.</p>
       </div>
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Checkout Securely</h3>
-        <p class="text-brown text-sm leading-relaxed">Provide delivery details and pay securely via M-Pesa STK push.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">4</div>
-        <h3 class="font-display font-semibold text-lg text-espresso mb-2">We Bake Fresh</h3>
-        <p class="text-brown text-sm leading-relaxed">Our expert bakers craft your cake from scratch with premium ingredients.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">5</div>
-        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Delivered to You</h3>
-        <p class="text-brown text-sm leading-relaxed">We deliver safely to your door, ready for the celebration.</p>
+
+      <!-- Step 3 -->
+      <div class="step-card bg-white p-8 rounded-3xl shadow-lg border border-cream-dark transition-all hover:-translate-y-2">
+        <div class="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl font-bold font-display mx-auto mb-6 shadow-md shadow-green-500/30">3</div>
+        <h3 class="font-display font-semibold text-xl text-espresso mb-3 text-center">Enjoy the Celebration</h3>
+        <p class="text-brown text-sm leading-relaxed text-center">We will hand-deliver the masterpiece fast and fresh to your door across Nairobi. Time to slice and serve!</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DELIVERY GUARANTEE (New Trust Component)
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-16 bg-espresso text-cream overflow-hidden relative">
+  <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat"></div>
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <h2 class="font-display font-bold text-3xl mb-4 text-white">Nairobi Delivery Guarantee 🚚</h2>
+    <p class="text-cream/80 max-w-2xl mx-auto text-lg mb-8">We safely hand-deliver to Kilimani, Westlands, Kileleshwa, CBD, and surrounding estates. All cakes are transported in climate-controlled conditions so they arrive picture-perfect!</p>
+    <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text=Hello%20Keki%20Cakes,%20do%20you%20deliver%20to..." target="_blank" class="inline-flex btn-whatsapp px-8 py-3 bg-white/10 border border-white/20 hover:bg-white/20 text-white">
+      Query Delivery for Your Area
+    </a>
   </div>
 </section>
 
