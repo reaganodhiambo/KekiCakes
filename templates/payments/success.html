@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Payment Successful! – Keki Cakes{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-20 text-center">
+  <!-- Success Icon -->
+  <div class="w-28 h-28 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8 animate-fade-in-up">
+    <svg class="w-14 h-14 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+    </svg>
+  </div>
+
+  <h1 class="font-display font-bold text-4xl text-espresso mb-3">Payment Received! </h1>
+  <p class="text-brown text-lg mb-8 leading-relaxed">
+    Your order has been confirmed. We're baking with love and will notify you when it's ready!
+  </p>
+
+  <!-- Receipt -->
+  <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 p-8 text-left mb-8">
+    <h2 class="font-display font-semibold text-xl text-espresso mb-5 text-center">Order Confirmation</h2>
+    <div class="space-y-3 text-sm">
+      <div class="flex justify-between">
+        <span class="text-brown">Order Number</span>
+        <span class="font-semibold text-espresso">#{{ order.pk }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-brown">Customer</span>
+        <span class="font-semibold text-espresso">{{ order.customer.name }}</span>
+      </div>
+      {% if payment and payment.mpesa_receipt %}
+      <div class="flex justify-between">
+        <span class="text-brown">M-Pesa Receipt</span>
+        <span class="font-semibold text-green-700">{{ payment.mpesa_receipt }}</span>
+      </div>
+      {% endif %}
+      <div class="flex justify-between">
+        <span class="text-brown">Amount</span>
+        <span class="font-display font-bold text-rose text-xl">KES {{ order.total|floatformat:"0" }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-brown">Delivery Type</span>
+        <span class="font-semibold text-espresso">{{ order.get_order_type_display }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-brown">Status</span>
+        <span class="bg-green-100 text-green-800 px-3 py-0.5 rounded-full text-xs font-semibold">✓ Paid</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="{% url 'core:home' %}" class="btn-primary px-8 py-4">
+      🏠 Back to Home
+    </a>
+    <a href="https://wa.me/{{ WHATSAPP_NUMBER }}?text={{ "Hello! I just placed order %23"|urlencode }}{{ order.pk }}{{ " – just confirming receipt. Thank you!"|urlencode }}" target="_blank"
+       class="btn-whatsapp px-8 py-4">
+       Confirm via WhatsApp
+    </a>
+  </div>
+</div>
+{% endblock %}

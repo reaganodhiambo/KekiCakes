@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}Pay for Order #{{ order.pk }} – Keki Cakes{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-12">
+  <div class="text-center mb-10">
+    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+      <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+      </svg>
+    </div>
+    <h1 class="section-title text-3xl">Complete Payment</h1>
+    <p class="text-brown mt-2">Order #{{ order.pk }} · Total: <strong class="text-rose text-xl font-display">KES {{ order.total|floatformat:"0" }}</strong></p>
+  </div>
+
+  <!-- Order Items -->
+  <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 p-6 mb-8">
+    <h2 class="font-display font-semibold text-lg text-espresso mb-4">Your Order</h2>
+    <div class="space-y-3">
+      {% for item in items %}
+      <div class="flex justify-between text-sm">
+        <span class="text-espresso">{{ item.product.name }}
+          {% if item.size %}({{ item.size }}){% endif %}
+          × {{ item.quantity }}
+        </span>
+        <span class="font-semibold text-espresso">KES {{ item.subtotal|floatformat:"0" }}</span>
+      </div>
+      {% endfor %}
+      <div class="border-t border-cream-dark pt-3 flex justify-between font-semibold">
+        <span>Total</span>
+        <span class="font-display text-xl text-rose">KES {{ order.total|floatformat:"0" }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pay with M-Pesa -->
+  <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 p-6">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold">M</div>
+      <div>
+        <div class="font-semibold text-espresso">Pay via M-Pesa</div>
+        <div class="text-xs text-brown">STK Push – Enter your number and we'll send the prompt</div>
+      </div>
+    </div>
+
+    {% if error %}
+    <div class="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-5">
+       {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- STK Push Form -->
+    <form
+      id="stk-form"
+      method="POST"
+      action="{% url 'payments:initiate' order.pk %}"
+      hx-post="{% url 'payments:initiate' order.pk %}"
+      hx-target="#stk-result"
+      hx-swap="innerHTML"
+      hx-indicator="#stk-loading"
+    >
+      {% csrf_token %}
+      <div class="mb-4">
+        <label class="form-label" for="pay-phone">M-Pesa Phone Number</label>
+        <input type="tel" name="phone" id="pay-phone" required
+          value="{{ order.customer.phone }}"
+          class="form-input text-lg font-semibold tracking-wider"
+          placeholder="0712345678"
+        />
+        <p class="text-xs text-brown mt-1">The STK Push prompt will appear on this number</p>
+      </div>
+
+      <button type="submit" id="stk-btn" class="btn-primary w-full py-4 text-lg">
+        <span id="stk-loading" class="htmx-indicator">
+          <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+        </span>
+         Send M-Pesa Prompt
+      </button>
+    </form>
+
+    <!-- HTMX result area (polling partial appears here) -->
+    <div id="stk-result" class="mt-5"></div>
+  </div>
+</div>
+{% endblock %}

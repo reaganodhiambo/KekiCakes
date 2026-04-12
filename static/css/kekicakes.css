@@ -1,0 +1,306 @@
+/* ================================================================
+   KekiCakes – Custom CSS
+   Design tokens + custom utilities on top of Tailwind
+   ================================================================ */
+
+/* ── Base ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FBF5EE; /* cream-light */
+}
+
+/* ── Typography ────────────────────────────────────────────────── */
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-body    { font-family: 'Inter', system-ui, sans-serif; }
+
+/* ── Navbar Links ──────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #2C1810;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #C9847A;
+  transition: width 0.2s ease;
+}
+.nav-link:hover, .nav-link.active { color: #C9847A; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ── Button Styles ─────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #C9847A;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(201,132,122,0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(201,132,122,0.45);
+  background-color: #B87068;
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #C9847A;
+  border: 2px solid #C9847A;
+  font-weight: 600;
+  padding: 0.72rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  background: #C9847A;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #25D366;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(37,211,102,0.35);
+}
+.btn-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(37,211,102,0.45);
+  background-color: #128C7E;
+}
+
+/* ── Product Cards ─────────────────────────────────────────────── */
+.product-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 12px rgba(44,24,16,0.06);
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(44,24,16,0.14);
+}
+.product-card .card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.product-card .card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.product-card:hover .card-img-wrap img {
+  transform: scale(1.06);
+}
+
+/* ── Section Titles ────────────────────────────────────────────── */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #2C1810;
+  line-height: 1.2;
+}
+.section-subtitle {
+  font-size: 1rem;
+  color: #8B5E52;
+  margin-top: 0.5rem;
+}
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.75rem 0 2.5rem;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #C9847A44;
+}
+.section-divider span {
+  font-size: 1.25rem;
+}
+
+/* ── Hero ───────────────────────────────────────────────────────── */
+.hero-gradient {
+  background-color: #2C1810;
+}
+
+/* ── Category Cards ─────────────────────────────────────────────── */
+.category-card {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.category-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(44,24,16,0.2); }
+.category-card .overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(44,24,16,0.6);
+  transition: opacity 0.3s;
+}
+.category-card:hover .overlay { opacity: 0.9; }
+
+/* ── Testimonial Cards ──────────────────────────────────────────── */
+.testimonial-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 2px 16px rgba(44,24,16,0.07);
+  border: 1px solid #F5E6D3;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.testimonial-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(44,24,16,0.12); }
+
+/* ── Form Inputs ────────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  border: 1.5px solid #E8D0B5;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: #2C1810;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-input:focus {
+  border-color: #C9847A;
+  box-shadow: 0 0 0 3px rgba(201,132,122,0.15);
+}
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #4A2C20;
+}
+
+/* ── Cart ──────────────────────────────────────────────────────── */
+.qty-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #F5E6D3;
+  display:flex; align-items:center; justify-content:center;
+  font-weight: 700;
+  color: #8B5E52;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.qty-btn:hover { background: #C9847A; color: #fff; }
+
+/* ── Steps (How it Works) ───────────────────────────────────────── */
+.step-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 16px rgba(44,24,16,0.07);
+  border: 1px solid #F5E6D3;
+  position: relative;
+}
+.step-number {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #C9847A;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+/* ── Badge ─────────────────────────────────────────────────────── */
+.badge-featured {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: #C9847A;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.5s ease both; }
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+  50%       { box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+}
+#whatsapp-float { animation: pulse-ring 2.5s infinite; }
+
+/* ── HTMX Loading Indicator ─────────────────────────────────────── */
+.htmx-indicator { opacity: 0; transition: opacity 0.2s; }
+.htmx-request .htmx-indicator { opacity: 1; }
+
+/* ── Responsive Image ───────────────────────────────────────────── */
+img { max-width: 100%; height: auto; }
+
+/* ── Gallery ────────────────────────────────────────────────────── */
+.gallery-item {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(44,24,16,0.15);
+}
+
+/* ── Utility ────────────────────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

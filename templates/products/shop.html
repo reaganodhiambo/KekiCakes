@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shop All Cakes – Keki Cakes{% endblock %}
+{% block meta_description %}Browse our premium cake collection. Filter by category, price, or search. Birthday cakes, wedding cakes, cupcakes and more. Order with M-Pesa.{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Page Header -->
+  <div class="mb-10">
+    <h1 class="section-title">Our Cake Collection</h1>
+    <p class="section-subtitle">{{ products.count }} cakes available • Filter to find your perfect match</p>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="flex flex-col lg:flex-row gap-8">
+
+    <!-- ── Sidebar Filters ─────────────────────────────────────────── -->
+    <aside class="w-full lg:w-72 shrink-0" x-data="{ filtersOpen: false }">
+      <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 overflow-hidden">
+        <div
+          class="flex items-center justify-between px-6 py-4 cursor-pointer lg:cursor-default bg-cream/50"
+          @click="filtersOpen = !filtersOpen"
+        >
+          <h2 class="font-display font-semibold text-espresso">Filters</h2>
+          <span class="lg:hidden text-brown" x-text="filtersOpen ? '▲' : '▼'"></span>
+        </div>
+
+        <div
+          class="px-6 py-5 space-y-6"
+          :class="{ 'hidden': !filtersOpen, 'block': filtersOpen }"
+          style="display:block"
+          x-bind:class="{ 'hidden lg:block': !filtersOpen }"
+        >
+          <!-- Search -->
+          <div>
+            <label class="form-label">Search</label>
+            <input
+              type="text"
+              id="search-input"
+              name="q"
+              value="{{ query }}"
+              placeholder="Search cakes..."
+              class="form-input"
+              hx-get="{% url 'products:htmx_grid' %}"
+              hx-trigger="keyup changed delay:400ms"
+              hx-target="#product-grid"
+              hx-include="#filter-form"
+              hx-indicator="#loading-indicator"
+            />
+          </div>
+
+          <!-- Filter Form -->
+          <form
+            id="filter-form"
+            hx-get="{% url 'products:htmx_grid' %}"
+            hx-trigger="change"
+            hx-target="#product-grid"
+            hx-indicator="#loading-indicator"
+          >
+            <!-- Category Filter -->
+            <div class="mb-5">
+              <label class="form-label">Category</label>
+              <div class="space-y-2 mt-2">
+                <label class="flex items-center gap-2 cursor-pointer group">
+                  <input type="radio" name="category" value="" {% if not current_category %}checked{% endif %}
+                    class="accent-rose" />
+                  <span class="text-sm text-espresso group-hover:text-rose transition-colors">All Categories</span>
+                </label>
+                {% for cat in categories %}
+                <label class="flex items-center gap-2 cursor-pointer group">
+                  <input type="radio" name="category" value="{{ cat.slug }}"
+                    {% if current_category == cat.slug %}checked{% endif %}
+                    class="accent-rose" />
+                  <span class="text-sm text-espresso group-hover:text-rose transition-colors">
+                     {{ cat.name }}
+                  </span>
+                </label>
+                {% endfor %}
+              </div>
+            </div>
+
+            <!-- Price Range -->
+            <div>
+              <label class="form-label">Price Range (KES)</label>
+              <div class="flex gap-2 mt-2">
+                <input type="number" name="min_price" placeholder="Min" value="{{ current_min }}"
+                  class="form-input text-sm" min="0" step="100" />
+                <input type="number" name="max_price" placeholder="Max" value="{{ current_max }}"
+                  class="form-input text-sm" min="0" step="100" />
+              </div>
+            </div>
+          </form>
+
+          <!-- Clear filters -->
+          <a href="{% url 'products:shop' %}" class="block text-center text-sm text-rose hover:text-rose-dark font-medium transition-colors">
+            ✕ Clear all filters
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Product Grid ─────────────────────────────────────────── -->
+    <div class="flex-1">
+      <!-- Loading indicator -->
+      <div id="loading-indicator" class="htmx-indicator flex items-center gap-2 text-brown text-sm mb-4">
+        <div class="w-4 h-4 border-2 border-rose border-t-transparent rounded-full animate-spin"></div>
+        Searching...
+      </div>
+
+      <!-- Product grid (replacement target for HTMX) -->
+      <div id="product-grid">
+        {% include 'htmx/product_grid.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Keki Cakes – Baked with Love, Delivered with Joy{% endblock %}
+
+{% block content %}
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════════════════════ -->
+<section class="hero-gradient relative overflow-hidden min-h-[88vh] flex items-center">
+  <!-- Decorative circles -->
+  <div class="absolute top-10 right-10 w-72 h-72 bg-rose/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 left-10 w-96 h-96 bg-brown/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
+    <!-- Hero Copy -->
+    <div class="text-center lg:text-left animate-fade-in-up">
+      <span class="inline-block bg-rose/20 text-rose-light border border-rose/30 text-xs font-semibold tracking-widest uppercase rounded-full px-4 py-1.5 mb-6">
+         Freshly Baked Daily
+      </span>
+      <h1 class="font-display font-bold text-5xl sm:text-6xl lg:text-7xl text-cream leading-tight mb-6">
+        Every Occasion<br/>
+        <span class="text-rose-light italic">Deserves a</span><br/>
+        Perfect Cake
+      </h1>
+      <p class="text-cream/70 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+        Premium custom cakes crafted by passionate bakers. From intimate birthday celebrations to grand weddings — we bake your story.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <a href="{% url 'products:shop' %}" class="btn-primary text-lg px-8 py-4">
+          Order Now
+        </a>
+        <a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="btn-whatsapp text-lg px-8 py-4">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <!-- Stats -->
+      <div class="flex gap-8 mt-12 justify-center lg:justify-start">
+        <div class="text-center">
+          <div class="font-display font-bold text-3xl text-cream">500+</div>
+          <div class="text-cream/60 text-sm">Happy Clients</div>
+        </div>
+        <div class="w-px bg-cream/20"></div>
+        <div class="text-center">
+          <div class="font-display font-bold text-3xl text-cream">50+</div>
+          <div class="text-cream/60 text-sm">Cake Designs</div>
+        </div>
+        <div class="w-px bg-cream/20"></div>
+        <div class="text-center">
+          <div class="font-display font-bold text-3xl text-cream">5★</div>
+          <div class="text-cream/60 text-sm">Star Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Image / Decorative -->
+    <div class="hidden lg:flex items-center justify-center relative">
+      <div class="w-96 h-96 rounded-full overflow-hidden shadow-2xl border border-rose/30">
+        <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=800&q=80" alt="Special Cake" class="w-full h-full object-cover"/>
+      </div>
+      <!-- Floating labels -->
+      <div class="absolute top-12 right-0 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-fade-in-up" style="animation-delay:0.2s">
+        <div>
+          <div class="text-xs font-semibold text-espresso">Custom Designs</div>
+          <div class="text-xs text-brown">Made just for you</div>
+        </div>
+      </div>
+      <div class="absolute bottom-16 left-0 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 animate-fade-in-up" style="animation-delay:0.4s">
+        <div>
+          <div class="text-xs font-semibold text-espresso">Same-Day Delivery</div>
+          <div class="text-xs text-brown">Across Nairobi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ABOUT US
+═══════════════════════════════════════════════════════════════ -->
+<section id="about" class="py-20 bg-white">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+    <!-- Image -->
+    <div class="relative h-96 rounded-3xl overflow-hidden shadow-xl border border-cream">
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f40ce88f4?w=800&q=80" alt="Baking process" class="w-full h-full object-cover">
+    </div>
+    <!-- Text -->
+    <div>
+      <h2 class="section-title text-left">About Keki Cakes</h2>
+      <p class="section-subtitle text-left">The Secret Ingredient is Love</p>
+      <div class="section-divider ml-0 max-w-[100px] mb-6"></div>
+      <p class="text-brown leading-relaxed mb-4">
+        Founded in the heart of Nairobi, Keki Cakes started with a simple belief: that every celebration, big or small, deserves a cake that not only looks spectacular but tastes extraordinary.
+      </p>
+      <p class="text-brown leading-relaxed mb-6">
+        We use only the finest ingredients—from rich Belgian chocolate to fresh local dairy—crafting each cake from scratch to ensure your special moments are unforgettable.
+      </p>
+      <div class="flex gap-4">
+        <a href="{% url 'products:shop' %}" class="btn-primary">View Our Creations</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CATEGORIES
+═══════════════════════════════════════════════════════════════ -->
+<section id="categories" class="py-20 bg-cream-light">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-subtitle">Find the perfect cake for every occasion</p>
+      <div class="section-divider mx-auto max-w-xs"></div>
+    </div>
+
+    {% if categories %}
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      {% for cat in categories %}
+      <a href="{{ cat.get_absolute_url }}" class="category-card group">
+        <div class="h-40 flex flex-col items-center justify-center
+                    {% cycle 'bg-rose/20' 'bg-brown/20' 'bg-amber-100' 'bg-pink-100' 'bg-orange-100' %}
+                    rounded-2xl border border-cream-dark/20 transition-all group-hover:shadow-lg">
+          <span class="font-display font-semibold text-espresso text-sm text-center px-2">{{ cat.name }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FEATURED CAKES (HTMX Lazy Loaded)
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10">
+      <div>
+        <h2 class="section-title">Our Featured Cakes</h2>
+        <p class="section-subtitle">Bestsellers loved by our customers</p>
+        <div class="section-divider"></div>
+      </div>
+      <a href="{% url 'products:shop' %}" class="btn-outline mt-4 sm:mt-0 self-start sm:self-auto">
+        View All Cakes →
+      </a>
+    </div>
+
+    <!-- HTMX lazy-load the product grid -->
+    <div
+      id="featured-cakes"
+      hx-get="{% url 'core:htmx_featured' %}"
+      hx-trigger="revealed"
+      hx-swap="innerHTML"
+    >
+      <!-- Loading skeleton -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for i in "1234"|make_list %}
+        <div class="product-card animate-pulse">
+          <div class="aspect-[4/3] bg-cream-dark rounded-t-2xl"></div>
+          <div class="p-4 space-y-3">
+            <div class="h-4 bg-cream-dark rounded w-3/4"></div>
+            <div class="h-3 bg-cream-dark rounded w-1/2"></div>
+            <div class="h-8 bg-cream-dark rounded-full w-full mt-2"></div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     GALLERY
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-20 bg-cream-light">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="section-title">Our Cake Gallery</h2>
+      <p class="section-subtitle">A taste of what we create — browse our recent work</p>
+      <div class="section-divider mx-auto max-w-xs"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" x-data="{ lightbox: null }">
+      {% for img in gallery_images %}
+      <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer group" @click="lightbox = '{{ img.url }}'">
+        <div class="aspect-square overflow-hidden">
+          <img src="{{ img.url }}" alt="{{ img.alt }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Lightbox -->
+      <div x-show="lightbox" x-transition.opacity @click.self="lightbox = null"
+           class="fixed inset-0 z-50 bg-espresso/80 flex items-center justify-center p-4" style="display:none">
+        <button @click="lightbox = null" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 text-white hover:bg-white/40 flex items-center justify-center text-xl transition-colors">✕</button>
+        <img :src="lightbox" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════════════════ -->
+<section id="how-it-works" class="py-20 bg-cream">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="section-title">How it Works</h2>
+      <p class="section-subtitle">Order your dream cake in 5 easy steps</p>
+      <div class="section-divider mx-auto max-w-xs"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8 relative">
+      <!-- Connector line (desktop only) -->
+      <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-rose/20 via-rose to-rose/20"></div>
+
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Browse & Select</h3>
+        <p class="text-brown text-sm leading-relaxed">Find your favourite design from our collection or request a custom one.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Customize</h3>
+        <p class="text-brown text-sm leading-relaxed">Choose your preferred weight, flavour, colour, and add a personalized message.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Checkout Securely</h3>
+        <p class="text-brown text-sm leading-relaxed">Provide delivery details and pay securely via M-Pesa STK push.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3 class="font-display font-semibold text-lg text-espresso mb-2">We Bake Fresh</h3>
+        <p class="text-brown text-sm leading-relaxed">Our expert bakers craft your cake from scratch with premium ingredients.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <h3 class="font-display font-semibold text-lg text-espresso mb-2">Delivered to You</h3>
+        <p class="text-brown text-sm leading-relaxed">We deliver safely to your door, ready for the celebration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">Don't just take our word for it</p>
+      <div class="section-divider mx-auto max-w-xs"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for t in testimonials %}
+      <div class="testimonial-card">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 bg-cream rounded-full flex items-center justify-center">{{ t.avatar|safe }}</div>
+          <div>
+            <div class="font-semibold text-sm text-espresso">{{ t.name }}</div>
+            <div class="flex gap-0.5 mt-0.5">
+              {% for star in "12345"|make_list %}
+              <span class="text-amber-400 text-xs">★</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <p class="text-brown text-sm leading-relaxed italic">"{{ t.text }}"</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FAQ SECTION
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-20 bg-cream-light">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Quick answers to common questions</p>
+      <div class="section-divider mx-auto max-w-xs"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-3" x-data="{ openFaq: null }">
+      {% include 'htmx/faq_items.html' %}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CUSTOM INQUIRY CTA
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="section-title text-left">Need Something Special?</h2>
+        <p class="section-subtitle text-left">Send us a custom inquiry and we'll create your dream cake</p>
+        <div class="section-divider ml-0 max-w-[100px] mb-6"></div>
+        <p class="text-brown leading-relaxed mb-6">
+          Whether it's a unique flavour combination, a specific design, or a multi-tier wedding masterpiece — our team is ready to bring your vision to life. Fill out the form and we'll respond within 24 hours with a custom quote.
+        </p>
+        <a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="btn-whatsapp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Or Chat on WhatsApp
+        </a>
+      </div>
+      <div class="bg-cream-light p-8 rounded-2xl shadow-sm border border-cream-dark/20">
+        <h3 class="font-display font-semibold text-xl text-espresso mb-6">Custom Cake Inquiry</h3>
+        <div id="inquiry-form-container">
+          {% include 'htmx/inquiry_form.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CTA BANNER
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-20 hero-gradient">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="font-display font-bold text-4xl sm:text-5xl text-cream mb-6">
+      Ready to Order? Let's Bake!
+    </h2>
+    <p class="text-cream/70 text-lg mb-10">
+      Place your order online or chat with us on WhatsApp. We'll make it perfect.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'products:shop' %}" class="btn-primary text-lg px-10 py-4">
+        Browse Cakes
+      </a>
+      <a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="btn-whatsapp text-lg px-10 py-4">
+        WhatsApp Order
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load static %}
+{% if products %}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  {% for product in products %}
+  {% include 'htmx/product_card.html' %}
+  {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-12 text-brown">
+  <p>No featured cakes yet. <a href="{% url 'products:shop' %}" class="text-rose underline">Browse all cakes →</a></p>
+</div>
+{% endif %}

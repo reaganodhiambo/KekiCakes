@@ -1,0 +1,38 @@
+{% load static %}
+<div class="product-card group">
+  <a href="{{ product.get_absolute_url }}" class="card-img-wrap block">
+    {% if product.images.exists %}
+      <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" loading="lazy" />
+    {% elif product.base_image %}
+      <img src="{{ product.base_image.url }}" alt="{{ product.name }}" loading="lazy" />
+    {% else %}
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Cake" class="w-full h-full object-cover"/>
+    {% endif %}
+    {% if product.is_featured %}
+      <span class="badge-featured"> Featured</span>
+    {% endif %}
+  </a>
+  <div class="p-5">
+    <div class="flex items-start justify-between mb-1">
+      <h3 class="font-display font-semibold text-base text-espresso leading-snug flex-1">
+        <a href="{{ product.get_absolute_url }}" class="hover:text-rose transition-colors">{{ product.name }}</a>
+      </h3>
+    </div>
+    {% if product.brief %}
+    <p class="text-xs text-brown/70 leading-relaxed mt-1 line-clamp-2">{{ product.brief }}</p>
+    {% endif %}
+    {% if product.category %}
+    <span class="inline-block text-[10px] text-rose bg-rose/10 px-2 py-0.5 rounded-full font-medium mt-2">{{ product.category.name }}</span>
+    {% endif %}
+    <div class="flex items-center justify-between mt-3">
+      <div>
+        <span class="text-xs text-brown">from</span>
+        <span class="font-display font-bold text-lg text-rose ml-1">KES {{ product.starting_price|floatformat:"0" }}</span>
+      </div>
+      <a href="{{ product.get_absolute_url }}"
+         class="bg-rose/10 hover:bg-rose text-rose hover:text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-all">
+        Order →
+      </a>
+    </div>
+  </div>
+</div>

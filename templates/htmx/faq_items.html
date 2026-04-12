@@ -1,0 +1,64 @@
+{% comment %}
+FAQ accordion items — used on both contact and home pages.
+Requires parent element with: x-data="{ openFaq: null }"
+{% endcomment %}
+
+<div class="border border-cream-dark/20 rounded-xl overflow-hidden bg-white">
+  <button @click="openFaq === 1 ? openFaq = null : openFaq = 1" class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-cream/30 transition-colors">
+    <span class="font-medium text-espresso pr-4">How far in advance should I order?</span>
+    <svg class="w-5 h-5 text-rose shrink-0 transition-transform duration-200" :class="openFaq === 1 && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div x-show="openFaq === 1" x-collapse class="px-6 pb-4 text-brown text-sm leading-relaxed">
+    We recommend ordering at least 3–5 days in advance for standard cakes and 1–2 weeks for wedding or custom designs. Same-day orders may be available for select items — contact us to check.
+  </div>
+</div>
+
+<div class="border border-cream-dark/20 rounded-xl overflow-hidden bg-white">
+  <button @click="openFaq === 2 ? openFaq = null : openFaq = 2" class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-cream/30 transition-colors">
+    <span class="font-medium text-espresso pr-4">Do you deliver?</span>
+    <svg class="w-5 h-5 text-rose shrink-0 transition-transform duration-200" :class="openFaq === 2 && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div x-show="openFaq === 2" x-collapse class="px-6 pb-4 text-brown text-sm leading-relaxed">
+    Yes! We deliver across Nairobi and its environs. Delivery charges vary by location and are calculated at checkout. You can also pick up from our kitchen for free.
+  </div>
+</div>
+
+<div class="border border-cream-dark/20 rounded-xl overflow-hidden bg-white">
+  <button @click="openFaq === 3 ? openFaq = null : openFaq = 3" class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-cream/30 transition-colors">
+    <span class="font-medium text-espresso pr-4">Can I customize my cake design?</span>
+    <svg class="w-5 h-5 text-rose shrink-0 transition-transform duration-200" :class="openFaq === 3 && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div x-show="openFaq === 3" x-collapse class="px-6 pb-4 text-brown text-sm leading-relaxed">
+    Absolutely. Use our inquiry form or WhatsApp to describe your ideal cake — we'll work with you on flavour, colour, tiers, and decorations to create something truly special.
+  </div>
+</div>
+
+<div class="border border-cream-dark/20 rounded-xl overflow-hidden bg-white">
+  <button @click="openFaq === 4 ? openFaq = null : openFaq = 4" class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-cream/30 transition-colors">
+    <span class="font-medium text-espresso pr-4">What payment methods do you accept?</span>
+    <svg class="w-5 h-5 text-rose shrink-0 transition-transform duration-200" :class="openFaq === 4 && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div x-show="openFaq === 4" x-collapse class="px-6 pb-4 text-brown text-sm leading-relaxed">
+    We accept M-Pesa (our primary method via STK Push), as well as bank transfers for large orders. Payment is required before we begin baking.
+  </div>
+</div>
+
+<div class="border border-cream-dark/20 rounded-xl overflow-hidden bg-white">
+  <button @click="openFaq === 5 ? openFaq = null : openFaq = 5" class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-cream/30 transition-colors">
+    <span class="font-medium text-espresso pr-4">What sizes are available?</span>
+    <svg class="w-5 h-5 text-rose shrink-0 transition-transform duration-200" :class="openFaq === 5 && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div x-show="openFaq === 5" x-collapse class="px-6 pb-4 text-brown text-sm leading-relaxed">
+    Our cakes range from 0.5 KG (serves 4–6) up to 5 KG (serves 40+). For very large events, multi-tier options are available on request.
+  </div>
+</div>
+
+<div class="border border-cream-dark/20 rounded-xl overflow-hidden bg-white">
+  <button @click="openFaq === 6 ? openFaq = null : openFaq = 6" class="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-cream/30 transition-colors">
+    <span class="font-medium text-espresso pr-4">What if I need to cancel my order?</span>
+    <svg class="w-5 h-5 text-rose shrink-0 transition-transform duration-200" :class="openFaq === 6 && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </button>
+  <div x-show="openFaq === 6" x-collapse class="px-6 pb-4 text-brown text-sm leading-relaxed">
+    Cancellations made more than 48 hours before the delivery date receive a full refund. Within 48 hours, a 50% fee applies. Same-day cancellations are non-refundable.
+  </div>
+</div>

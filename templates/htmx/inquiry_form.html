@@ -1,0 +1,40 @@
+<form method="POST" action="{% url 'core:inquiry_submit' %}" 
+      hx-post="{% url 'core:inquiry_submit' %}" 
+      hx-target="#inquiry-form-container"
+      class="space-y-4 text-left">
+  {% csrf_token %}
+  
+  <div>
+    <label class="form-label">Name</label>
+    <input type="text" name="name" required class="form-input" value="{{ inquiry_form.name.value|default:'' }}">
+  </div>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div>
+      <label class="form-label">Email</label>
+      <input type="email" name="email" class="form-input" value="{{ inquiry_form.email.value|default:'' }}">
+    </div>
+    <div>
+      <label class="form-label">Phone</label>
+      <input type="text" name="phone" required class="form-input" value="{{ inquiry_form.phone.value|default:'' }}">
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div>
+      <label class="form-label">Event Date</label>
+      <input type="date" name="event_date" class="form-input" value="{{ inquiry_form.event_date.value|default:'' }}">
+    </div>
+    <div>
+      <label class="form-label">Budget Range (Optional)</label>
+      <input type="text" name="budget" placeholder="e.g. 5,000 - 8,000 KES" class="form-input" value="{{ inquiry_form.budget.value|default:'' }}">
+    </div>
+  </div>
+  
+  <div>
+    <label class="form-label">Describe Your Dream Cake</label>
+    <textarea name="cake_description" rows="4" required class="form-input resize-none" placeholder="Flavours, tiers, colors, special requests...">{{ inquiry_form.cake_description.value|default:'' }}</textarea>
+  </div>
+  
+  <button type="submit" class="btn-primary w-full py-3 mt-4">Submit Inquiry</button>
+</form>

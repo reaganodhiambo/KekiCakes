@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /*?*
+Allow: /
+
+Sitemap: https://kekicakes.co.ke/sitemap.xml

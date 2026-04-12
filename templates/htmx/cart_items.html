@@ -1,0 +1,72 @@
+{# Cart container – HTMX swap target for add/remove/update operations #}
+<div id="cart-container">
+  {% if cart_items %}
+  <div class="space-y-4" id="cart-items-list">
+    {% for item in cart_items %}
+    <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 p-4 flex gap-4 items-center">
+      <!-- Image -->
+      <div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-cream">
+        {% if item.thumbnail %}
+          <img src="{{ item.thumbnail }}" alt="{{ item.cake_name }}" class="w-full h-full object-cover" />
+        {% else %}
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Cake" class="w-full h-full object-cover"/>
+        {% endif %}
+      </div>
+
+      <!-- Details -->
+      <div class="flex-1 min-w-0">
+        <h3 class="font-display font-semibold text-espresso truncate">{{ item.cake_name }}</h3>
+        <div class="text-xs text-brown mt-0.5 space-x-2">
+          {% if item.size_label %}<span>{{ item.size_label }}</span>{% endif %}
+          {% if item.type_label %}<span>· {{ item.type_label }}</span>{% endif %}
+          {% if item.color %}<span>· {{ item.color|title }}</span>{% endif %}
+          {% if item.custom_message %}<span>· "{{ item.custom_message }}"</span>{% endif %}
+        </div>
+        <div class="font-semibold text-rose mt-1">KES {{ item.price_decimal|floatformat:"0" }}</div>
+      </div>
+
+      <!-- Qty Controls -->
+      <div class="flex items-center gap-2 shrink-0">
+        <form hx-post="{% url 'orders:update' %}" hx-target="#cart-container" hx-swap="outerHTML">
+          {% csrf_token %}
+          <input type="hidden" name="key" value="{{ item.key }}" />
+          <input type="hidden" name="quantity" value="{{ item.quantity|add:'-1' }}" />
+          <button type="submit" class="qty-btn">−</button>
+        </form>
+        <span class="w-8 text-center font-semibold text-espresso">{{ item.quantity }}</span>
+        <form hx-post="{% url 'orders:update' %}" hx-target="#cart-container" hx-swap="outerHTML">
+          {% csrf_token %}
+          <input type="hidden" name="key" value="{{ item.key }}" />
+          <input type="hidden" name="quantity" value="{{ item.quantity|add:'1' }}" />
+          <button type="submit" class="qty-btn">+</button>
+        </form>
+      </div>
+
+      <!-- Subtotal -->
+      <div class="text-right shrink-0 min-w-[80px]">
+        <div class="font-display font-bold text-espresso">KES {{ item.subtotal|floatformat:"0" }}</div>
+        <form hx-post="{% url 'orders:remove' %}" hx-target="#cart-container" hx-swap="outerHTML">
+          {% csrf_token %}
+          <input type="hidden" name="key" value="{{ item.key }}" />
+          <button type="submit" class="text-xs text-red-400 hover:text-red-600 mt-1 transition-colors">Remove</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Cart Total Summary -->
+  <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 p-5 mt-4">
+    <div class="flex justify-between items-center text-lg font-semibold text-espresso">
+      <span>Total</span>
+      <span class="font-display text-2xl text-rose">KES {{ cart_total|floatformat:"0" }}</span>
+    </div>
+  </div>
+
+  {% else %}
+  <div class="text-center py-16">
+    <p class="text-brown mt-4 mb-6">Your cart is empty.</p>
+    <a href="{% url 'products:shop' %}" class="btn-primary">Browse Cakes</a>
+  </div>
+  {% endif %}
+</div>

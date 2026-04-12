@@ -1,0 +1,19 @@
+[Unit]
+Description=KekiCakes Gunicorn Daemon
+After=network.target
+
+[Service]
+User=kekicakes
+Group=www-data
+WorkingDirectory=/home/kekicakes/KekiCakes
+ExecStart=/home/kekicakes/KekiCakes/venv/bin/gunicorn \
+    --access-logfile - \
+    --workers 3 \
+    --bind unix:/run/kekicakes.sock \
+    kekicakes.wsgi:application
+EnvironmentFile=/home/kekicakes/KekiCakes/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

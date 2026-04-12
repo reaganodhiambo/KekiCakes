@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}My Cart – Keki Cakes{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <h1 class="section-title mb-2">Your Cart</h1>
+  <div class="section-divider"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
+    <!-- Cart Items -->
+    <div class="lg:col-span-2">
+      {% include 'htmx/cart_items.html' with cart_items=cart_items cart_total=cart_total %}
+    </div>
+
+    <!-- Order Summary Sidebar -->
+    <div class="lg:col-span-1">
+      {% if not cart.is_empty %}
+      <div class="bg-white rounded-2xl shadow-sm border border-cream-dark/20 p-6 sticky top-24">
+        <h2 class="font-display font-semibold text-xl text-espresso mb-5">Order Summary</h2>
+
+        <div class="space-y-2 text-sm text-brown mb-5">
+          {% for item in cart_items %}
+          <div class="flex justify-between">
+            <span>{{ item.cake_name }} × {{ item.quantity }}</span>
+            <span class="font-medium text-espresso">KES {{ item.subtotal|floatformat:"0" }}</span>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="border-t border-cream-dark pt-4 mb-6">
+          <div class="flex justify-between font-semibold text-espresso text-lg">
+            <span>Total</span>
+            <span class="font-display text-rose text-2xl">KES {{ cart_total|floatformat:"0" }}</span>
+          </div>
+        </div>
+
+        <a href="{% url 'orders:checkout' %}" class="btn-primary w-full py-4 text-center block mb-3">
+          Proceed to Checkout →
+        </a>
+
+        <a href="{{ whatsapp_url }}" target="_blank" class="btn-whatsapp w-full py-4 text-center block">
+           Order via WhatsApp
+        </a>
+
+        <a href="{% url 'products:shop' %}" class="block text-center text-sm text-rose hover:text-rose-dark mt-4 transition-colors">
+          ← Continue Shopping
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

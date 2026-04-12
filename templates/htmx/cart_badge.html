@@ -1,0 +1,10 @@
+{# Cart badge – replaces the "Cart" text with item count after HTMX add #}
+<span id="cart-count" class="font-semibold">
+  {% with cart|length as count %}
+  {% if count > 0 %}
+    Cart ({{ count }})
+  {% else %}
+    Cart
+  {% endif %}
+  {% endwith %}
+</span>

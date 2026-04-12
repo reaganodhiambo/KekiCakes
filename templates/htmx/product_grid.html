@@ -1,0 +1,15 @@
+{% load static %}
+{% if products %}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+  {% for product in products %}
+  {% include 'htmx/product_card.html' %}
+  {% endfor %}
+</div>
+{% else %}
+<div class="flex flex-col items-center justify-center py-24 text-center">
+  <span class="text-6xl mb-4">🔍</span>
+  <h3 class="font-display text-2xl text-espresso mb-2">No cakes found</h3>
+  <p class="text-brown mb-6">Try adjusting your filters or search terms.</p>
+  <a href="{% url 'products:shop' %}" class="btn-outline">Clear Filters</a>
+</div>
+{% endif %}
