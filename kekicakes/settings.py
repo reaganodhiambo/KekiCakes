@@ -21,6 +21,7 @@ DEBUG = True
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost,kekicakes.co.ke,www.kekicakes.co.ke').split(',')
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -129,3 +130,50 @@ EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True').lower() in ('true', '1', 't')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
+
+# ── Jazzmin Admin Layout ──────────────────────────────────────────────────────
+JAZZMIN_SETTINGS = {
+    "site_title": "Keki Cakes Admin",
+    "site_header": "Keki Cakes",
+    "site_brand": "Keki Cakes",
+    # "site_logo": "images/logo.png", # add if we have an exact path
+    "welcome_sign": "Welcome to the Keki Cakes Management Portal",
+    "copyright": "Keki Cakes",
+    "search_model": ["auth.User", "orders.Order"],
+    "show_ui_builder": False,
+    "topmenu_links": [
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "View Site", "url": "/", "new_window": True},
+    ],
+    "usermenu_links": [
+        {"model": "auth.user"}
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "products.Category": "fas fa-tags",
+        "products.Cake": "fas fa-birthday-cake",
+        "products.CakeVariant": "fas fa-cubes",
+        "orders.Customer": "fas fa-address-book",
+        "orders.Order": "fas fa-shopping-cart",
+        "payments.MpesaTransaction": "fas fa-money-bill-wave",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar": "navbar-white navbar-light",
+    "theme": "litera",
+    "sidebar": "sidebar-dark-maroon",
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme_color": "maroon",
+    "accent": "accent-maroon",
+    "actions_sticky_top": False
+}

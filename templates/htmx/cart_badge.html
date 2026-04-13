@@ -8,3 +8,8 @@
   {% endif %}
   {% endwith %}
 </span>
+
+<span id="mobile-cart-badge" hx-swap-oob="outerHTML:#mobile-cart-badge" class="absolute -top-1 -right-2 bg-rose text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+  {{ cart|length }}
+</span>
+

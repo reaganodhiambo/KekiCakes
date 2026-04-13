@@ -228,7 +228,7 @@
 
 {% block extra_js %}
 <script>
-const PRODUCT_DATA = {
+var PRODUCT_DATA = {
   id: {{ product.id }},
   name: "{{ product.name|escapejs }}",
   whatsappNumber: "{{ WHATSAPP_NUMBER }}",
@@ -241,7 +241,7 @@ const PRODUCT_DATA = {
   {% endif %}
 };
 
-const INITIAL_WEIGHTS = {{ weight_prices|safe }};
+var INITIAL_WEIGHTS = {{ weight_prices|safe }};
 
 function productDetail() {
   return {
