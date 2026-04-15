@@ -5,6 +5,15 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.sitemaps.views import sitemap
+from apps.core.sitemaps import StaticViewSitemap, CakeSitemap, CategorySitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'cakes': CakeSitemap,
+    'categories': CategorySitemap,
+}
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls', namespace='core')),
@@ -12,6 +21,7 @@ urlpatterns = [
     path('cart/', include('apps.orders.urls', namespace='orders')),
     path('payments/', include('apps.payments.urls', namespace='payments')),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 # Serve media files in development
